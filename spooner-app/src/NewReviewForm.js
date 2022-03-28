@@ -1,5 +1,7 @@
 import React from "react";
 
 function NewReviewForm(){
-    return ()
+    return 
 }
+
+export default NewMovieForm

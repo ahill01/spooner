@@ -1,0 +1,21 @@
+{
+    "restaurants": [
+      {
+        "id": 1,
+        "name": "Fancy Restaurant",
+        "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+        "price": "$$$$",
+        "attire":"fancy",
+        "dietary":["vegetarian, gluten free, paleo, pescetarian"]
+
+      },
+      {
+        "id": 1,
+        "name": "Vegan Restaurant",
+        "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+        "price": "$$$$",
+        "attire":"fancy",
+        "dietary":["vegetarian, gluten free, vegan"]
+      }
+    ]
+  }
