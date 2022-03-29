@@ -1,11 +1,12 @@
 import React from 'react';
 import Review from "./Review"
 
-function ReviewList ({ }){
+function ReviewsList ({ }){
 return (
-    <ul className="list">
-        <Review/>
-    </ul>
+       <div className="review-list"> 
+       <Review></Review>
+       <Review></Review>
+        </div>
 )}
 
-export default ReviewList;
+export default ReviewsList;

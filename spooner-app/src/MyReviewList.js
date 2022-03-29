@@ -1,5 +1,7 @@
 import React from "react";
 
 function MyReviewList() {
-    return()
+    return
 }
+
+export default MyReviewList
