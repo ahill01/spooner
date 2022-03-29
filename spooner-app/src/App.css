@@ -304,4 +304,5 @@
     padding:5px;
     float:right;
     flex-shrink: inherit;
+    text-align: center;
   }
