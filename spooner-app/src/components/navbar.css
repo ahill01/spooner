@@ -23,7 +23,10 @@ a {
   align-items: center;
   justify-content: space-around;
   height: 8vh;
-  background: rgb(0, 33, 65);
+  background: rgb(157, 162, 167);
+  font-size: 1.6rem;
+  line-height: auto;
+  padding: auto;
 }
 .nav__brand {
   text-transform: uppercase;
@@ -52,7 +55,7 @@ a {
     cursor: pointer;
   }
   .nav__menu {
-    position: fixed;
+    position: absolute;
     top: 7vh;
     right: 0;
     height: 93vh;
