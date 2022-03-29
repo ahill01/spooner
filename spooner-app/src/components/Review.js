@@ -1,15 +1,18 @@
 import React from "react";
 
-function Review() {
-    return (<div>
-    <img src="https://via.placeholder.com/250" alt ="placeholder"/>
-    <h1>Name</h1>
-    <p>Price</p>
-    <p>Attire</p>
-    <ul> <h2>Dietary:</h2>
-        <li>Vegetarian</li>
-        <li>Gluten-Free</li>
-    </ul>
+function Review({review}) {
+const {name,image,price,attire,dietary} = review;
+
+    return (<div className="review">
+    <img src= {(image) ? image : "https://via.placeholder.com/250"} alt ="placeholder" className="review-img"/>
+        <div className="data">
+            <h1>{name}</h1>
+            <p>{price}</p>
+            <p><strong>attire:</strong> {attire}</p>
+            <ul> <h2>Friendly for:</h2>
+            {dietary.map((category) => <li>{category}</li>)}
+            </ul>
+         </div>
     </div>)
 }
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import Review from "./Review"
 
-function ReviewList ({ }){
+function ReviewsList ({reviews}){
 return (
-    <ul className="list">
-        <Review/>
-    </ul>
+       <div className="review-list"> 
+       {reviews.map((review) => <Review key={review.id} review = {review}/>)}
+        </div>
 )}
 
-export default ReviewList;
+export default ReviewsList;

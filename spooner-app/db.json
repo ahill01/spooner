@@ -1,0 +1,22 @@
+{
+    "restaurants": [
+      {
+        "id": 1,
+        "name": "Fancy Restaurant",
+        "image": "https://cdn.pixabay.com/photo/2020/03/21/19/37/dessert-4955030_1280.jpg",
+        "price": "$$$$",
+        "attire":"Classy Steakhouse",
+        "dietary":["vegetarian", "gluten free","paleo", "pescetarian"],
+        "author":"Allison"
+      },
+      {
+        "id": 2,
+        "name": "Vegan Restaurant",
+        "image": "https://cdn.pixabay.com/photo/2019/06/29/09/00/food-4305743_1280.jpg",
+        "price": "$$$",
+        "attire":"Brunch with the Besties",
+        "dietary":["vegetarian", "gluten free", "vegan"],
+        "author":"Brian"
+      }
+    ]
+  }
