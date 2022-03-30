@@ -1,5 +1,6 @@
 import React from "react";
-function Filterbar({setFilterData, attireOptions,priceOptions})
+
+function Filterbar({setFilterData, attireOptions,priceOptions}){
 
 function filterChange(event){
     const key = event.target.name
