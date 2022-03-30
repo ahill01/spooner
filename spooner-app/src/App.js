@@ -6,6 +6,17 @@ import Filterbar from "./components/Filterbar";
 
 function App() {
 const [reviews, setReviews] = useState([])
+const [filterData, setFilterData]=useState({
+  price:"",
+  attire:"",
+  diet:"",
+})
+
+const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special Occasion"]
+    
+const priceOptions = ["$","$$","$$$","$$$$"]
+
+// const filteredList = reviews.filter(review => {review.})
 
 useEffect(() => {
   fetch("http://localhost:4000/restaurants")
@@ -16,8 +27,8 @@ useEffect(() => {
   return (
     <div className="App">
     <Navbar/>
-   <ReviewsList reviews={reviews}/>
-   <Filterbar/>
+    <Filterbar setFilterData={setFilterData} attireOptions ={attireOptions} priceOptions={priceOptions}/>
+   <ReviewsList reviews={reviews} />
     </div>
   );
 }
