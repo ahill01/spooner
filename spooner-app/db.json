@@ -5,7 +5,7 @@
         "name": "Fancy Restaurant",
         "image": "https://cdn.pixabay.com/photo/2020/03/21/19/37/dessert-4955030_1280.jpg",
         "price": "$$$$",
-        "attire":"Classy Steakhouse",
+        "attire":"Special Occasion",
         "dietary":["vegetarian", "gluten free","paleo", "pescetarian"],
         "author":"Allison"
       },
