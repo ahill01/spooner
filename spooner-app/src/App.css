@@ -284,7 +284,7 @@
     justify-content: center;
     display:flex;
     flex-shrink: 7;
-    width:50%;
+    width: 60%;
     padding:20px;
     vertical-align: middle;
     border-style: solid;
@@ -305,4 +305,9 @@
     float:right;
     flex-shrink: inherit;
     text-align: center;
+  }
+
+  .filter{
+    float:left;
+    width:25%;
   }

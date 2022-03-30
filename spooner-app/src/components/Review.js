@@ -1,5 +1,4 @@
 import React from "react";
-
 function Review({review}) {
 const {name,image,price,attire,dietary} = review;
 

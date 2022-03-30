@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar"
 import ReviewsList from "./components/ReviewsList"
 import './App.css';
 import React, {useState, useEffect} from "react"
-import ReviewsList from "./ReviewsList"
+import Filterbar from "./components/Filterbar";
 
 function App() {
 const [reviews, setReviews] = useState([])
@@ -17,6 +17,7 @@ useEffect(() => {
     <div className="App">
     <Navbar/>
    <ReviewsList reviews={reviews}/>
+   <Filterbar/>
     </div>
   );
 }
