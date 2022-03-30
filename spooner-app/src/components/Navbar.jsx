@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import  './navbar.css'
 
 
@@ -18,34 +19,28 @@ function Navbar() {
   return (
     <nav className="nav">
       <a href="#" className="nav__brand">
-        Spooner
+       Spooner
       </a>
       <ul className={active}>
         <li className="nav__item">
-          <a href="#" className="nav__link">
+          <a href="/" className="nav__link">
+          <NavLink  className="nav_link" exact to="/" />
             Home
           </a>
         </li>
         <li className="nav__item">
-          <a href="#" className="nav__link">
+          <a href="/reviews" className="nav__link">
+          <NavLink className="nav_link" exact to="/reviews" />
             Reviews
           </a>
         </li>
         <li className="nav__item">
-          <a href="#" className="nav__link">
+          <a href="/new" className="nav__link">
+          <NavLink className="nav_link" exact to="/new" />
             Add a Review
           </a>
         </li>
-        <li className="nav__item">
-          <a href="#" className="nav__link">
-            My Reviews
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="#" className="nav__link">
-            About
-          </a>
-        </li>
+        
       </ul>
       <div onClick={navToggle} className={icon}>
         <div className="line1"></div>

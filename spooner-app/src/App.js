@@ -1,8 +1,12 @@
+import {Route, Switch} from "react-router-dom"
 import Navbar from "./components/Navbar"
 import ReviewsList from "./components/ReviewsList"
 import './App.css';
 import React, {useState, useEffect} from "react"
 import Filterbar from "./components/Filterbar";
+import Review from "./components/Review";
+import NewReviewForm from "./components/NewReviewForm";
+import LandingPage from "./components/LandingPage";
 
 function App() {
 const [reviews, setReviews] = useState([])
@@ -26,9 +30,29 @@ useEffect(() => {
 
   return (
     <div className="App">
-    <Navbar/>
-    <Filterbar setFilterData={setFilterData} attireOptions ={attireOptions} priceOptions={priceOptions}/>
-   <ReviewsList reviews={reviews} />
+    
+    <Switch>
+    
+    <Route exact path="/">
+      <Navbar/>  
+      <LandingPage />
+        </Route>
+        <Route exact path="/reviews">
+        <Navbar/>
+        <Filterbar setFilterData={setFilterData} attireOptions ={attireOptions} priceOptions={priceOptions}/>
+        <ReviewsList reviews={reviews} />
+        </Route>
+        <Route exact path="/new">
+        <Navbar/>
+          <NewReviewForm />
+        </Route>
+        <Route exact path="/reviews/:id">
+        <Navbar/>
+          <Review />
+        </Route>
+      </Switch>
+
+   
     </div>
   );
 }  
