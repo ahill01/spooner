@@ -20,7 +20,9 @@ const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special
     
 const priceOptions = ["$","$$","$$$","$$$$"]
 
-// const filteredList = reviews.filter(review => {review.})
+const filteredList = reviews.filter(review => 
+  (review.price === filterData.price || review.attire=== filterData.attire || review.diet === filterData.diet)
+)
 
 useEffect(() => {
   fetch("http://localhost:4000/restaurants")
@@ -40,7 +42,7 @@ useEffect(() => {
         <Route exact path="/reviews">
         <Navbar/>
         <Filterbar setFilterData={setFilterData} attireOptions ={attireOptions} priceOptions={priceOptions}/>
-        <ReviewsList reviews={reviews} />
+        <ReviewsList reviews={filteredList} />
         </Route>
         <Route exact path="/new">
         <Navbar/>
