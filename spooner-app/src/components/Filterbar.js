@@ -40,7 +40,7 @@ function dietChosenFilter(event){
 }
 
 function filterSubmit(e){
-  e.preventDefault()
+  // e.preventDefault()
   console.log("price: "+priceChosen)
   console.log("attire: "+attireChosen)
   console.log("diet: "+dietChosen)

@@ -21,7 +21,14 @@ const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special
 const dietOptions=["Vegetarian","Gluten-Free","Pescetarian","Vegan","Low-Carb"]
 
 function priceMatch(review){
- return (review.price === filterData.price[0] || review.review.price === filterData.price[1] || review.price === filterData.price[2] || review.price === filterData.price[3])
+  debugger;
+console.log(review)
+console.log(review.price == filterData.price[0])
+console.log(review.price == filterData.price[1])
+console.log(review.price == filterData.price[2])
+console.log(review.price == filterData.price[3])
+
+ return (review.price == filterData.price[0] || review.price == filterData.price[1] || review.price == filterData.price[2] || review.price == filterData.price[3])
 }
 
 function attireMatch(review){
@@ -35,7 +42,6 @@ function attireMatch(review){
 function noFilter(){
   return (filterData.attire.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
 }
-
 
 const priceFilteredList =  reviews.filter(review => {
   if(noFilter()) {
