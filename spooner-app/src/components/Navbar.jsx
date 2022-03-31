@@ -3,13 +3,14 @@ import { NavLink } from "react-router-dom";
 import  './navbar.css'
 
 
+
 function Navbar() {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
-  const navToggle = () => {
+ const navToggle = () => {
     if (active === "nav__menu") {
       setActive("nav__menu nav__active");
-    } else setActive("nav__menu");
+    } else setActive("nav__menu"); 
 
     // Icon Toggler
     if (icon === "nav__toggler") {
