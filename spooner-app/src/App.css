@@ -287,6 +287,15 @@
       "Filterbar ReviewsList"
       "footer footer footer footer";
   } */
+
+  #landing{
+    text-align: center;
+    align-content: center;
+  }
+
+ img.landing{
+    width:65%;
+  }
   .review {
     background-color: aquamarine;
     grid-column: 1 / 2;
@@ -319,7 +328,8 @@
 
   #filterbar{
     float:left;
-    width:15%;
+    width:20%;
+    height: 200%;
     display:flex;
     grid-column: 1/2;
     flex-direction: column;
@@ -330,3 +340,7 @@
   .review-list {
     grid-column: 2 / 3;
   }
+
+.rating {
+  text-align: center;
+}

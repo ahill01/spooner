@@ -1,49 +1,35 @@
 {
-  "restaurants": [
-    {
-      "id": 1,
-      "name": "Fancy Restaurant",
-      "image": "https://cdn.pixabay.com/photo/2020/03/21/19/37/dessert-4955030_1280.jpg",
-      "price": "$$$$",
-      "attire": "Special Occasion",
-      "dietary": [
-        "vegetarian",
-        "gluten free",
-        "paleo",
-        "pescetarian"
-      ],
-      "author": "Allison"
-    },
-    {
-      "id": 2,
-      "name": "Vegan Restaurant",
-      "image": "https://cdn.pixabay.com/photo/2019/06/29/09/00/food-4305743_1280.jpg",
-      "price": "$$$",
-      "attire": "Brunch with the Besties",
-      "dietary": [
-        "vegetarian",
-        "gluten free",
-        "vegan"
-      ],
-      "author": "Brian"
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "id": 7
-    },
-    {
-      "id": 8
-    }
-  ]
-}
+    "restaurants": [
+      {
+        "id": 1,
+        "name": "Fancy Restaurant",
+        "image": "https://cdn.pixabay.com/photo/2020/03/21/19/37/dessert-4955030_1280.jpg",
+        "price": 4,
+        "attire":"Special Occasion",
+        "dietary":["Vegetarian", "Gluten-Free", "Pescetarian","",""],
+        "author":"Allison",
+        "rating":3
+      },
+      {
+        "id": 2,
+        "name": "Vegan Restaurant",
+        "image": "https://cdn.pixabay.com/photo/2019/06/29/09/00/food-4305743_1280.jpg",
+        "price": 3,
+        "attire":"Brunch with the Besties",
+        "dietary":["Vegetarian", "Gluten-Free", "","Vegan",""],
+        "author":"Brian",
+        "rating":5
+      },
+      {
+        "id": 3,
+        "name": "The Local Spot",
+        "image": "https://cdn.pixabay.com/photo/2019/06/29/09/00/food-4305743_1280.jpg",
+        "price": 1,
+        "attire":"Casual",
+        "dietary":["Vegetarian", "Gluten-Free", "Pescetarian","Vegan",""],
+        "author":"Brian",
+        "rating":4
+      }
+    ]
+  }
+  

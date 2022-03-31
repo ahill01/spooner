@@ -11,16 +11,44 @@ import LandingPage from "./components/LandingPage";
 function App() {
 const [reviews, setReviews] = useState([])
 const [filterData, setFilterData]=useState({
-  price:"",
-  attire:"",
-  diet:"",
+  price:[],
+  attire:[],
+  diet:[],
 })
 
 const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special Occasion"]
-    
-const priceOptions = ["$","$$","$$$","$$$$"]
 
-// const filteredList = reviews.filter(review => {review.})
+const dietOptions=["Vegetarian","Gluten-Free","Pescetarian","Vegan","Low-Carb"]
+
+function priceMatch(review){
+  debugger;
+console.log(review)
+console.log(review.price == filterData.price[0])
+console.log(review.price == filterData.price[1])
+console.log(review.price == filterData.price[2])
+console.log(review.price == filterData.price[3])
+
+ return (review.price == filterData.price[0] || review.price == filterData.price[1] || review.price == filterData.price[2] || review.price == filterData.price[3])
+}
+
+function attireMatch(review){
+  return filterData.attire.includes(review.price)
+}
+
+// function dietMatch(review){
+//   return filterData.diet.includes(review.diet)
+// }
+
+function noFilter(){
+  return (filterData.attire.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
+}
+
+const priceFilteredList =  reviews.filter(review => {
+  if(noFilter()) {
+    return true} 
+  else {return priceMatch(review)}
+}
+)
 
 useEffect(() => {
   fetch("http://localhost:4000/restaurants")
@@ -39,8 +67,8 @@ useEffect(() => {
         </Route>
         <Route exact path="/reviews">
         <Navbar/>
-        <Filterbar setFilterData={setFilterData} attireOptions ={attireOptions} priceOptions={priceOptions}/>
-        <ReviewsList reviews={reviews} />
+        <Filterbar setFilterData={setFilterData} filterData={filterData} attireOptions ={attireOptions} dietOptions={dietOptions}/>
+        <ReviewsList reviews={priceFilteredList} />
         </Route>
         <Route exact path="/new">
         <Navbar/>
