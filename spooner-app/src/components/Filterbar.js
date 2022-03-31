@@ -7,7 +7,7 @@ function filterChange(event){
     const value = event.target.value
 
     if(key === "price") {
-        return setFilterData((prevObj) => {return {...prevObj, price:priceOptions[value]}});
+        return setFilterData((prevObj) => {return {...prevObj, price:(value+1)}});
     } 
     else if(key==="attire"){
        return setFilterData(prevObj => {return {...prevObj, attire:attireOptions[value]}});
@@ -21,13 +21,13 @@ function filterChange(event){
         <h1>Filter By:</h1>
         <form >
         <div id="price" className="filterbar">
-        <label htmlFor="price">Price</label>
-        <select id="price" name="price" onChange={filterChange}>
-        <option value="0">$</option>
-        <option value="1">$$</option>
-        <option value="2">$$$</option>
-        <option value="3">$$$$</option>
-        </select>
+        {/* <label htmlFor="price">Price</label> */}
+        {/* <select id="price" name="price" onChange={filterChange}> */}
+        <input type="checkbox" value="0">💰</input>
+        {/* <option value="1">💰💰</option>
+        <option value="2">💰💰💰</option>
+        <option value="3">💰💰💰💰</option>
+        </select> */}
           </div>
           <br></br>
           <div id="attire" className="filterbar">

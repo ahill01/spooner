@@ -330,3 +330,7 @@
   .review-list {
     grid-column: 2 / 3;
   }
+
+.rating {
+  text-align: center;
+}

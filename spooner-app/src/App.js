@@ -21,9 +21,9 @@ const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special
 const priceOptions = ["$","$$","$$$","$$$$"]
 
 const filteredList =  reviews.filter(review => {
-  if(filterData.attire === undefined && filterData.attire===undefined && filterData.diet===undefined) {
+  if(filterData.attire === "" && filterData.attire==="" && filterData.diet==="") {
     return true} 
-  else { reutrn (review.price === filterData.price && review.attire=== filterData.attire && review.diet === filterData.diet)}
+  else { return (review.price === filterData.price || review.attire=== filterData.attire || review.diet)}
 }
 )
 
