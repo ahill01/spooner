@@ -20,8 +20,11 @@ const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special
     
 const priceOptions = ["$","$$","$$$","$$$$"]
 
-const filteredList = reviews.filter(review => 
-  (review.price === filterData.price || review.attire=== filterData.attire || review.diet === filterData.diet)
+const filteredList =  reviews.filter(review => {
+  if(filterData.attire === undefined && filterData.attire===undefined && filterData.diet===undefined) {
+    return true} 
+  else { reutrn (review.price === filterData.price && review.attire=== filterData.attire && review.diet === filterData.diet)}
+}
 )
 
 useEffect(() => {

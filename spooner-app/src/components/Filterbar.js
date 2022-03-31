@@ -44,7 +44,6 @@ function filterChange(event){
             <label htmlFor="diet">Dietary Considerations: </label>
             <input type="type" name="diet" onChange={filterChange}></input> 
           </div>
-          <button type="submit">Search</button>
         </form>
       </div>
     );;
