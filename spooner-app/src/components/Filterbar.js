@@ -1,19 +1,13 @@
 import React from "react";
 
-function Filterbar({setFilterData, attireOptions,priceOptions}){
+function Filterbar({setFilterData, filterData, attireOptions}){
+const priceChosen = []
 
 function filterChange(event){
-    const key = event.target.name
+    const key = event.target.className
     const value = event.target.value
-
-    if(key === "price") {
-        return setFilterData((prevObj) => {return {...prevObj, price:(value+1)}});
-    } 
-    else if(key==="attire"){
-       return setFilterData(prevObj => {return {...prevObj, attire:attireOptions[value]}});
-    } else {
-        return setFilterData(prevObj => {return {...prevObj, diet:value}})
-    }
+    priceChosen.push(value)
+    console.log(priceChosen)
 }
 
     return (
@@ -21,29 +15,55 @@ function filterChange(event){
         <h1>Filter By:</h1>
         <form >
         <div id="price" className="filterbar">
-        {/* <label htmlFor="price">Price</label> */}
-        {/* <select id="price" name="price" onChange={filterChange}> */}
-        <input type="checkbox" value="0">💰</input>
-        {/* <option value="1">💰💰</option>
-        <option value="2">💰💰💰</option>
-        <option value="3">💰💰💰💰</option>
-        </select> */}
+        <h2>Price</h2>
+        <input type="checkbox" value="1" name="price1" className="price" onSelect={filterChange}/>
+        <label for="price1">💰</label>
+        <br></br>
+        <input type="checkbox" value="2" name="price2" className="price" onSelect={filterChange}/>
+        <label for="price2">💰💰</label>
+        <br></br>
+        <input type="checkbox" value="3" name="price3" className="price" onSelect={filterChange}/>
+        <label for="price3">💰💰💰</label>
+        <br></br>
+        <input type="checkbox" value="4" name="price4" className="price" onSelect={filterChange}/>
+        <label for="price4">💰💰💰💰</label>
+        <br></br>
           </div>
           <br></br>
           <div id="attire" className="filterbar">
-        <label htmlFor="attire">Attire</label>
-        <select id="attire" name="attire" onChange={filterChange}>
-            <option value="0">Casual</option>
-            <option value="1">Brunch with the Besties</option>
-            <option value="2">Date Night</option>
-            <option value="3">Special Occasion</option>
-        </select>
+        <h2>Attire</h2>
+        <input type="checkbox" value="1" name="attire1" onChange={filterChange}/>
+        <label for="attire1">Casual</label>
+        <br></br>
+        <input type="checkbox" value="2" name="attire2" onChange={filterChange}/>
+        <label for="attire2">Brunch with the Beties</label>
+        <br></br>
+        <input type="checkbox" value="3" name="attire3" onChange={filterChange}/>
+        <label for="attire3">Date Night</label>
+        <br></br>
+        <input type="checkbox" value="4" name="attire4" onChange={filterChange}/>
+        <label for="attire4">Special Occasion</label>
+        <br></br>
           </div>
           <br></br>
           <div id="diet" className="filterbar">
-            <label htmlFor="diet">Dietary Considerations: </label>
-            <input type="type" name="diet" onChange={filterChange}></input> 
-          </div>
+            <h2>Dietary Considerations</h2>
+            <input type="checkbox" value="0" name="diet0" onChange={filterChange}/>
+            <label for="diet0">Vegetarian</label>
+            <br></br>
+            <input type="checkbox" value="1" name="diet1" onChange={filterChange}/>
+            <label for="diet1">Gluten-Free</label>
+            <br></br>
+            <input type="checkbox" value="2" name="diet2" onChange={filterChange}/>
+            <label for="diet2">Pescetarian</label>
+            <br></br>
+            <input type="checkbox" value="3" name="diet3" onChange={filterChange}/>
+            <label for="diet3">Vegan</label>
+            <br></br>
+            <input type="checkbox" value="4" name="diet4" onChange={filterChange}/>
+            <label for="diet4">Low-Carb</label>
+        <br></br>
+        </div>
         </form>
       </div>
     );;

@@ -11,19 +11,26 @@ import LandingPage from "./components/LandingPage";
 function App() {
 const [reviews, setReviews] = useState([])
 const [filterData, setFilterData]=useState({
-  price:"",
-  attire:"",
-  diet:"",
+  price:[],
+  attire:[],
+  diet:[],
 })
 
 const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special Occasion"]
-    
-const priceOptions = ["$","$$","$$$","$$$$"]
+
+function priceMatch(review){
+  return filterData.price.includes(review.price)
+}
+
+function noFilter(){
+  return (filterData.attire.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
+}
+
 
 const filteredList =  reviews.filter(review => {
-  if(filterData.attire === "" && filterData.attire==="" && filterData.diet==="") {
+  if(noFilter()) {
     return true} 
-  else { return (review.price === filterData.price || review.attire=== filterData.attire || review.diet)}
+  else { return (review.price === filterData.price[0])}
 }
 )
 
@@ -44,7 +51,7 @@ useEffect(() => {
         </Route>
         <Route exact path="/reviews">
         <Navbar/>
-        <Filterbar setFilterData={setFilterData} attireOptions ={attireOptions} priceOptions={priceOptions}/>
+        <Filterbar setFilterData={setFilterData} filterData={filterData} attireOptions ={attireOptions}/>
         <ReviewsList reviews={filteredList} />
         </Route>
         <Route exact path="/new">
