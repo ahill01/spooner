@@ -21,22 +21,26 @@ const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special
 const dietOptions=["Vegetarian","Gluten-Free","Pescetarian","Vegan","Low-Carb"]
 
 function priceMatch(review){
-  return filterData.price.includes(review.price)
+ return (review.price === filterData.price[0] || review.review.price === filterData.price[1] || review.price === filterData.price[2] || review.price === filterData.price[3])
 }
 
 function attireMatch(review){
   return filterData.attire.includes(review.price)
 }
 
+// function dietMatch(review){
+//   return filterData.diet.includes(review.diet)
+// }
+
 function noFilter(){
   return (filterData.attire.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
 }
 
 
-const filteredList =  reviews.filter(review => {
+const priceFilteredList =  reviews.filter(review => {
   if(noFilter()) {
     return true} 
-  else { return (review.price === filterData.price[0])}
+  else {return priceMatch(review)}
 }
 )
 
@@ -58,7 +62,7 @@ useEffect(() => {
         <Route exact path="/reviews">
         <Navbar/>
         <Filterbar setFilterData={setFilterData} filterData={filterData} attireOptions ={attireOptions} dietOptions={dietOptions}/>
-        <ReviewsList reviews={filteredList} />
+        <ReviewsList reviews={priceFilteredList} />
         </Route>
         <Route exact path="/new">
         <Navbar/>
