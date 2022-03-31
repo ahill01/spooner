@@ -18,8 +18,14 @@ const [filterData, setFilterData]=useState({
 
 const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special Occasion"]
 
+const dietOptions=["Vegetarian","Gluten-Free","Pescetarian","Vegan","Low-Carb"]
+
 function priceMatch(review){
   return filterData.price.includes(review.price)
+}
+
+function attireMatch(review){
+  return filterData.attire.includes(review.price)
 }
 
 function noFilter(){
@@ -51,7 +57,7 @@ useEffect(() => {
         </Route>
         <Route exact path="/reviews">
         <Navbar/>
-        <Filterbar setFilterData={setFilterData} filterData={filterData} attireOptions ={attireOptions}/>
+        <Filterbar setFilterData={setFilterData} filterData={filterData} attireOptions ={attireOptions} dietOptions={dietOptions}/>
         <ReviewsList reviews={filteredList} />
         </Route>
         <Route exact path="/new">
