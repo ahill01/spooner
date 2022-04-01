@@ -24,16 +24,26 @@ function handleChange(e){
   const key = e.target.name
   const value = e.target.value
 
-  const dietaryArr = newReview.dietary
-  if(key==="dietary"){
-    setNewReview({...newReview, [key]:(dietaryArr.push(value))})
-  } else {
   setNewReview({...newReview, [key]:value})
-  console.log(newReview)
-  }
 }
 
- 
+function handleDietaryChange(e){
+  const value = e.target.value
+  let dietaryArr = newDietary
+
+  console.log("dietary arr "+dietaryArr)
+  console.log("value " + value)
+
+    if(e.target.checked === true){
+     dietaryArr.push(value)
+     setNewDietary(dietaryArr) 
+
+    } else {
+     dietaryArr = dietaryArr.filter(element => {return element!==value})
+    setNewDietary(dietaryArr)
+    }
+
+}
 
 
   function handleSubmit(e) {
@@ -44,7 +54,7 @@ function handleChange(e){
       'Content-Type': 'application/json'
     
   },
-body: JSON.stringify({...newReview,dietary:[newDietary]})
+body: JSON.stringify({...newReview,dietary:newDietary})
   })
 
   window.alert("Review Submitted! Thank you!");
@@ -54,16 +64,17 @@ body: JSON.stringify({...newReview,dietary:[newDietary]})
     <div className="wrapper"> 
 
     <form onSubmit ={handleSubmit}>
-      <h1 style={{color: "red"}}>New Review Form</h1>
-      <p style={{color: "green"}}>Down below let us know how your experience was at the restaurant you went to. Share that hole-in-the-wall spot that you know others will love too! Or that spot with the two day old bread let others know to avoid it. Whatever your experience was we want to know about it. Prices too high chose from the drop-down. You licked your spoon clean! Choose from the spoon list! </p>
+      <h1 style={{color: "black"}}>New Review Form</h1>
+      <p style={{color: "#e30b5d"}}>Down below let us know how your experience was at the restaurant you went to. Share that hole-in-the-wall spot that you know others will love too! Or that spot with the two day old bread let others know to avoid it. Whatever your experience was we want to know about it. Prices too high? Chose from the drop-down. You licked your spoon clean?! Choose from the spoon list! </p>
 
      
       <fieldset>
            <p> User Name:</p>
-           <input name="name" />
+           <input name="author" onChange={handleChange}/>
+
            <p> Restaurant Name:</p>
-           
-           <input name="Price" />
+           <input name="name" onChange={handleChange}/>
+
            <p>Price:</p>            
             <select name="price" onChange={handleChange} >        
             <option value="1">💰</option>
@@ -74,13 +85,20 @@ body: JSON.stringify({...newReview,dietary:[newDietary]})
                       
            
            <p>Dietary Needs:</p>            
-            <select name="dietary" onChange={handleChange} >       
-            <option value="Vegetarian">Vegetarian </option>
-              <option value="Gluten Free">Gluten Free </option>
-              <option value="Pescetarian">Pescetarian</option>
-              <option value="Vegan">Vegan </option>
-              <option value="Low-carb">Low-Carb</option>
-            </select>
+            <input type="checkbox" value="Vegetarian" name="diet0" className="dietary" onChange={(e) => {handleDietaryChange(e)}}/>
+            <label for="diet0">Vegetarian</label>
+            <br></br>
+            <input type="checkbox" value="Gluten-Free" name="diet1" className="dietary" onChange={(e) => {handleDietaryChange(e)}}/>
+            <label for="diet">Gluten-Free</label>
+            <br></br>
+            <input type="checkbox" value="Pescetarian" name="diet2" className="dietary" onChange={(e) => {handleDietaryChange(e)}}/>
+            <label for="diet">Pescetarian</label>
+            <br></br>
+            <input type="checkbox" value="Vegan" name="diet3" className="dietary" onChange={(e) => {handleDietaryChange(e)}}/>
+            <label for="diet3">Vegan</label>
+            <br></br>
+            <input type="checkbox" value="Low-Carb" name="diet4" className="dietary" onChange={(e) => {handleDietaryChange(e)}}/>
+            <label for="diet4">Low-Carb</label>
             
            
            <p>Attire:</p>            

@@ -47,6 +47,77 @@
       ],
       "author": "Brian",
       "rating": 4
+    },
+    {
+      "name": "",
+      "price": "2",
+      "attire": "Date Night",
+      "rating": "4",
+      "dietary": [
+        []
+      ],
+      "id": 4
+    },
+    {
+      "name": "The Best Restaurant Ever",
+      "price": "3",
+      "attire": "Brunch with the Besties",
+      "rating": "2",
+      "author": "Somebody",
+      "dietary": [
+        []
+      ],
+      "id": 5
+    },
+    {
+      "name": "",
+      "price": "",
+      "attire": "",
+      "rating": "",
+      "dietary": [
+        []
+      ],
+      "id": 6
+    },
+    {
+      "name": "",
+      "price": "",
+      "attire": "",
+      "rating": "",
+      "dietary": [
+        [
+          "Gluten Free",
+          "Pescetarian",
+          "Vegan"
+        ]
+      ],
+      "id": 7
+    },
+    {
+      "name": "",
+      "price": "",
+      "attire": "",
+      "rating": "",
+      "dietary": [
+        "Gluten Free",
+        "Pescetarian",
+        "Vegan",
+        "Low-carb",
+        "Gluten Free"
+      ],
+      "id": 8
+    },
+    {
+      "name": "",
+      "price": "",
+      "attire": "",
+      "rating": "",
+      "dietary": [
+        "Pescetarian",
+        "Vegetarian",
+        "Low-carb"
+      ],
+      "id": 9
     }
   ]
 }
