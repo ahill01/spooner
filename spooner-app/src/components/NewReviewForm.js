@@ -2,14 +2,19 @@ import React, { useState } from'react';
 
 
 function NewReviewForm() {
-  const [newReview, setNewReview] = useState({name:"",price:"",attire:"",rating:""})
-  const [myStar, setMyStar] =useState("")
-  const[myResturant, setMyResturant] =useState("")
-  const[myPrice, setMyPrice] =useState("")
-  const[myDietary, setMyDietary] =useState("")
-  const[myAttire, setMyAttire] =useState("")
-  const[myReview, setMyReview] =useState("")
+  const [newReview, setNewReview] = useState({
+    name:"",
+    price:"",
+    attire:"",
+    rating:""
+  })
 
+  const[newDietary, setNewDietary] = useState([])
+  // const [newStar, setNewStar] =useState("")
+  // const[newResturant, setNewResturant] =useState("")
+  // const[newPrice, setNewPrice] =useState("")
+  // const[newDietary, setNewDietary] =useState("")
+  // const[newAttire, setNewAttire] =useState("")
   // const handleChange = (event) => {
   //   setMyStar(event.target.value)   
   // }
@@ -18,8 +23,14 @@ function NewReviewForm() {
 function handleChange(e){
   const key = e.target.name
   const value = e.target.value
-  // setFormData({...formData, [key]:value})
-  // console.log(formData)
+
+  const dietaryArr = newReview.dietary
+  if(key==="dietary"){
+    setNewReview({...newReview, [key]:(dietaryArr.push(value))})
+  } else {
+  setNewReview({...newReview, [key]:value})
+  console.log(newReview)
+  }
 }
 
  
@@ -27,20 +38,17 @@ function handleChange(e){
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    window.alert("Review Submitted! Thank you!");
-  
-  
   fetch("http://localhost:4000/restaurants",{
     method: 'POST',
     headers: { 
       'Content-Type': 'application/json'
     
   },
-body: JSON.stringify(
-)
+body: JSON.stringify({...newReview,dietary:[newDietary]})
+  })
 
-  })}
+  window.alert("Review Submitted! Thank you!");
+}
   return (
      
     <div className="wrapper"> 
@@ -50,25 +58,24 @@ body: JSON.stringify(
 
      
       <fieldset>
-         <label>
            <p>Name:</p>
            <input name="name" />
            <p> Restaurant Name:</p>
            
            <input name="Price" />
            <p>Price:</p>            
-            <select value={setMyPrice} onChange={e => setMyPrice(e.target.value)} >        
-            <option value="💰">💰</option>
-              <option value="💰💰">💰💰</option>
-              <option value="💰💰💰">💰💰💰</option>
-              <option value="💰💰💰💰">💰💰💰💰</option>
+            <select name="price" onChange={handleChange} >        
+            <option value="1">💰</option>
+              <option value="2">💰💰</option>
+              <option value="3">💰💰💰</option>
+              <option value="4">💰💰💰💰</option>
             </select>
                       
            
            <p>Dietary Needs:</p>            
-            <select value={myStar} onChange={e => setMyDietary(e.target.value)} >       
-            <option value="Vegetarian ">Vegetarian </option>
-              <option value="Gluten Free ">Gluten Free </option>
+            <select name="dietary" onChange={handleChange} >       
+            <option value="Vegetarian">Vegetarian </option>
+              <option value="Gluten Free">Gluten Free </option>
               <option value="Pescetarian">Pescetarian</option>
               <option value="Vegan">Vegan </option>
               <option value="Low-carb">Low-Carb</option>
@@ -76,23 +83,21 @@ body: JSON.stringify(
             
            
            <p>Attire:</p>            
-            <select value={myAttire} onChange={e => setMyAttire(e.target.value)} >        
-            <option value="Casual ">Casual </option>
-              <option value="Brunch with the Besties ">Brunch with the Besties </option>
+            <select name="attire" onChange={handleChange} >        
+            <option value="Casual">Casual </option>
+              <option value="Brunch with the Besties">Brunch with the Besties </option>
               <option value="Date Night">Date Night</option>
               <option value="Special Occasion">Special Occasion </option>
               </select>
 
-           <p> New Review:</p>
-           <input new_review="new_review" />
-         </label>
        <p>Food Rating:</p>
             
-      <select value={myStar} onChange={e => setMyReview(e.target.value)} >       
-      <option value="🥄">🥄</option>
-        <option value="🥄🥄">🥄🥄</option>
-        <option value="🥄🥄🥄">🥄🥄🥄</option>
-        <option value="🥄🥄🥄🥄">🥄🥄🥄🥄</option>
+      <select name="rating" onChange={handleChange} >       
+      <option value="1">🥄</option>
+        <option value="2">🥄🥄</option>
+        <option value="3">🥄🥄🥄</option>
+        <option value="4">🥄🥄🥄🥄</option>
+        <option value="5">🥄🥄🥄🥄</option>
       </select>
 
     <button type="submit">Submit</button>
