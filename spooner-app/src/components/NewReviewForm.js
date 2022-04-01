@@ -54,12 +54,13 @@ body: JSON.stringify({...newReview,dietary:[newDietary]})
     <div className="wrapper"> 
 
     <form onSubmit ={handleSubmit}>
-      <h1>New Review Form</h1>
+      <h1 style={{color: "black"}}>New Review Form</h1>
+      <p style={{color: "#e30b5d"}}>Down below let us know how your experience was at the restaurant you went to. Share that hole-in-the-wall spot that you know others will love too! Or that spot with the two day old bread let others know to avoid it. Whatever your experience was we want to know about it. Prices too high chose from the drop-down. You licked your spoon clean! Choose from the spoon list! </p>
 
      
       <fieldset>
            <p>Name:</p>
-           <input name="name" />
+           <input name="author" onChange={handleChange} />
            <p> Restaurant Name:</p>
            
            <input name="Price" />
