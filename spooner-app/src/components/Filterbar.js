@@ -40,7 +40,7 @@ function dietChosenFilter(event){
 }
 
 function filterSubmit(e){
-  // e.preventDefault()
+  e.preventDefault()
   console.log("price: "+priceChosen)
   console.log("attire: "+attireChosen)
   console.log("diet: "+dietChosen)
@@ -77,12 +77,12 @@ function filterSubmit(e){
         <label for="attire1">Casual</label>
         <br></br>
         <input type="checkbox" value="1" name="attire2" onChange={(e) => {attireChosenFilter(e)}}/>
-        <label for="attire2">Brunch with the Beties</label>
+        <label for="attire2">Brunch with the Besties</label>
         <br></br>
         <input type="checkbox" value="2" name="attire3" onChange={(e) => {attireChosenFilter(e)}}/>
         <label for="attire3">Date Night</label>
         <br></br>
-        <input type="checkbox" value="3" name="attire4" oonChange={(e) => {attireChosenFilter(e)}}/>
+        <input type="checkbox" value="3" name="attire4" onChange={(e) => {attireChosenFilter(e)}}/>
         <label for="attire4">Special Occasion</label>
         <br></br>
           </div>
