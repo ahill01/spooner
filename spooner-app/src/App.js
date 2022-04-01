@@ -13,42 +13,75 @@ const [reviews, setReviews] = useState([])
 const [filterData, setFilterData]=useState({
   price:[],
   attire:[],
-  diet:[],
+  dietary:[],
 })
+const [filteredList, setFilteredList] = useState([])
+// const [attireFilteredList, setAttireFilteredList] = useState([])
+
+// let priceFilteredList
+// let attireFilteredList
+// let dietFilteredList
 
 const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special Occasion"]
 
 const dietOptions=["Vegetarian","Gluten-Free","Pescetarian","Vegan","Low-Carb"]
 
-function priceMatch(review){
-  debugger;
-console.log(review)
-console.log(review.price == filterData.price[0])
-console.log(review.price == filterData.price[1])
-console.log(review.price == filterData.price[2])
-console.log(review.price == filterData.price[3])
+// function noFilter(){
+//   return (filterData.price.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
+// }
 
- return (review.price == filterData.price[0] || review.price == filterData.price[1] || review.price == filterData.price[2] || review.price == filterData.price[3])
+function priceMatch(review){
+if(filterData.price.length===0) {
+  return true}
+  else {
+    return (review.price == filterData.price[0] || review.price == filterData.price[1] || review.price == filterData.price[2] || review.price == filterData.price[3])
+  }
 }
 
 function attireMatch(review){
-  return filterData.attire.includes(review.price)
+  if(filterData.attire.length===0){
+    return true
+  } else return (review.attire == filterData.attire[0] || review.attire == filterData.attire[1] || review.attire == filterData.attire[2] || review.attire == filterData.attire[3])
+}
+
+function dietaryMatch(review){
+  if(filterData.dietary.length===0){
+    return true
+  } else {
+    return (review.dietary.includes(filterData.dietary[0]) || review.dietary.includes(filterData.dietary[1]) || review.dietary.includes(filterData.dietary[2]) || review.dietary.includes(filterData.dietary[3]) || review.dietary.includes(filterData.dietary[4]))
+  }
 }
 
 // function dietMatch(review){
 //   return filterData.diet.includes(review.diet)
 // }
 
-function noFilter(){
-  return (filterData.attire.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
-}
+useEffect(()=> {
+  //priceFiltered
+let priceFiltered = []
 
-const priceFilteredList =  reviews.filter(review => {
-  if(noFilter()) {
-    return true} 
-  else {return priceMatch(review)}
-}
+priceFiltered = reviews.filter(review => {
+  return priceMatch(review)
+  }
 )
+console.log(priceFiltered)
+
+//attireFiltered
+
+let attireFiltered = []
+
+attireFiltered = priceFiltered.filter(review => attireMatch(review))
+console.log(attireFiltered)
+//dietFiltered 
+
+let dietFiltered=[]
+
+dietFiltered = attireFiltered.filter(review => dietaryMatch(review))
+console.log(dietFiltered)
+
+  setFilteredList(dietFiltered);
+}, [filterData])
+
 
 useEffect(() => {
   fetch("http://localhost:4000/restaurants")
@@ -68,7 +101,7 @@ useEffect(() => {
         <Route exact path="/reviews">
         <Navbar/>
         <Filterbar setFilterData={setFilterData} filterData={filterData} attireOptions ={attireOptions} dietOptions={dietOptions}/>
-        <ReviewsList reviews={priceFilteredList} />
+        <ReviewsList reviews={(filteredList===undefined) ? reviews : filteredList} />
         </Route>
         <Route exact path="/new">
         <Navbar/>

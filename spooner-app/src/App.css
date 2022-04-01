@@ -329,7 +329,7 @@
   #filterbar{
     float:left;
     width:20%;
-    height: 200%;
+    height: 100vh;
     display:flex;
     grid-column: 1/2;
     flex-direction: column;
