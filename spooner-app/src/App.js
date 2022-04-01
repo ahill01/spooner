@@ -26,9 +26,9 @@ const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special
 
 const dietOptions=["Vegetarian","Gluten-Free","Pescetarian","Vegan","Low-Carb"]
 
-// function noFilter(){
-//   return (filterData.price.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
-// }
+function noFilter(){
+  return (filterData.price.length === 0 && filterData.attire.length ===0 && filterData.dietary.length===0)
+}
 
 function priceMatch(review){
 if(filterData.price.length===0) {
@@ -77,7 +77,8 @@ console.log(attireFiltered)
 let dietFiltered=[]
 
 dietFiltered = attireFiltered.filter(review => dietaryMatch(review))
-console.log(dietFiltered)
+
+  console.log(noFilter())
 
   setFilteredList(dietFiltered);
 }, [filterData])
@@ -101,7 +102,7 @@ useEffect(() => {
         <Route exact path="/reviews">
         <Navbar/>
         <Filterbar setFilterData={setFilterData} filterData={filterData} attireOptions ={attireOptions} dietOptions={dietOptions}/>
-        <ReviewsList reviews={(filteredList===undefined) ? reviews : filteredList} />
+        <ReviewsList reviews={(filteredList===undefined || noFilter()) ? reviews : filteredList} />
         </Route>
         <Route exact path="/new">
         <Navbar/>
