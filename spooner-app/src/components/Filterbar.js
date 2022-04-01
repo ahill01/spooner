@@ -44,11 +44,13 @@ function filterSubmit(e){
   console.log("price: "+priceChosen)
   console.log("attire: "+attireChosen)
   console.log("diet: "+dietChosen)
+
   setFilterData({
     price:priceChosen,
     attire:attireChosen,
-    diet:dietChosen,
+    dietary:dietChosen,
     })
+e.target.checked = false
 }
 
     return (

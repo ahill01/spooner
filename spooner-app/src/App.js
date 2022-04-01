@@ -13,10 +13,10 @@ const [reviews, setReviews] = useState([])
 const [filterData, setFilterData]=useState({
   price:[],
   attire:[],
-  diet:[],
+  dietary:[],
 })
-const [priceFilteredList, setPriceFilteredList] = useState([])
-const [attireFilteredList, setAttireFilteredList] = useState([])
+const [filteredList, setFilteredList] = useState([])
+// const [attireFilteredList, setAttireFilteredList] = useState([])
 
 // let priceFilteredList
 // let attireFilteredList
@@ -26,43 +26,63 @@ const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special
 
 const dietOptions=["Vegetarian","Gluten-Free","Pescetarian","Vegan","Low-Carb"]
 
+function noFilter(){
+  return (filterData.price.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
+}
+
 function priceMatch(review){
- return (review.price == filterData.price[0] || review.price == filterData.price[1] || review.price == filterData.price[2] || review.price == filterData.price[3])
+if(noFilter()) {
+  return true}
+  else {
+    return (review.price == filterData.price[0] || review.price == filterData.price[1] || review.price == filterData.price[2] || review.price == filterData.price[3])
+  }
 }
 
 function attireMatch(review){
   if(filterData.attire.length===0){
-    return priceFilteredList
+    return true
   } else return (review.attire == filterData.attire[0] || review.attire == filterData.attire[1] || review.attire == filterData.attire[2] || review.attire == filterData.attire[3])
 }
 
-function attireMatch(review){
-  return filterData.attire.includes(review.price)
+function dietaryMatch(review){
+  if(filterData.dietary.length===0){
+    return true
+  } else return (review.dietary == filterData.dietary[0] || review.dietary == filterData.dietary[1] || review.dietary == filterData.dietary[2] || review.dietary == filterData.dietary[3])
 }
 
 // function dietMatch(review){
 //   return filterData.diet.includes(review.diet)
 // }
 
-function noFilter(){
-  return (filterData.price.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
-}
+useEffect(()=> {
+  //priceFiltered
+let priceFiltered = []
 
-useEffect(()=> {setPriceFilteredList(reviews.filter(review => {
- // debugger;
+priceFiltered = reviews.filter(review => {
   if(noFilter()) {
-    return true} 
-  else {return priceMatch(review)}
-}
-));
-}, [filterData,reviews])
+  return true} 
+  else if(filterData.price.length === 0) {
+    return true
+  }
+else { return priceMatch(review)
+  }
+})
 
-useEffect(()=> {setAttireFilteredList(priceFilteredList.filter(review => {
-  if(noFilter()) {
-    return true} 
-  else {return attireMatch(review)}
-}
-))}, [priceFilteredList])
+//attireFiltered
+
+let attireFiltered = []
+
+attireFiltered = priceFiltered.filter(review => attireMatch(review))
+
+//dietFiltered 
+
+let dietFiltered=[]
+
+dietFiltered = attireFiltered.filter(review => dietaryMatch(review))
+  
+  setFilteredList(dietFiltered);
+}, [filterData])
+
 
 useEffect(() => {
   fetch("http://localhost:4000/restaurants")
@@ -82,7 +102,7 @@ useEffect(() => {
         <Route exact path="/reviews">
         <Navbar/>
         <Filterbar setFilterData={setFilterData} filterData={filterData} attireOptions ={attireOptions} dietOptions={dietOptions}/>
-        <ReviewsList reviews={(attireFilteredList===undefined) ? attireFilteredList : reviews} />
+        <ReviewsList reviews={(filteredList===undefined) ? filteredList : reviews} />
         </Route>
         <Route exact path="/new">
         <Navbar/>
