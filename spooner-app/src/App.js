@@ -26,12 +26,12 @@ const attireOptions = ["Casual", "Brunch with the Besties","Date Night","Special
 
 const dietOptions=["Vegetarian","Gluten-Free","Pescetarian","Vegan","Low-Carb"]
 
-function noFilter(){
-  return (filterData.price.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
-}
+// function noFilter(){
+//   return (filterData.price.length === 0 && filterData.attire.length ===0 && filterData.diet.length===0)
+// }
 
 function priceMatch(review){
-if(noFilter()) {
+if(filterData.price.length===0) {
   return true}
   else {
     return (review.price == filterData.price[0] || review.price == filterData.price[1] || review.price == filterData.price[2] || review.price == filterData.price[3])
@@ -47,7 +47,9 @@ function attireMatch(review){
 function dietaryMatch(review){
   if(filterData.dietary.length===0){
     return true
-  } else return (review.dietary == filterData.dietary[0] || review.dietary == filterData.dietary[1] || review.dietary == filterData.dietary[2] || review.dietary == filterData.dietary[3])
+  } else {
+    return (review.dietary.includes(filterData.dietary[0]) || review.dietary.includes(filterData.dietary[1]) || review.dietary.includes(filterData.dietary[2]) || review.dietary.includes(filterData.dietary[3]) || review.dietary.includes(filterData.dietary[4]))
+  }
 }
 
 // function dietMatch(review){
@@ -59,27 +61,24 @@ useEffect(()=> {
 let priceFiltered = []
 
 priceFiltered = reviews.filter(review => {
-  if(noFilter()) {
-  return true} 
-  else if(filterData.price.length === 0) {
-    return true
+  return priceMatch(review)
   }
-else { return priceMatch(review)
-  }
-})
+)
+console.log(priceFiltered)
 
 //attireFiltered
 
 let attireFiltered = []
 
 attireFiltered = priceFiltered.filter(review => attireMatch(review))
-
+console.log(attireFiltered)
 //dietFiltered 
 
 let dietFiltered=[]
 
 dietFiltered = attireFiltered.filter(review => dietaryMatch(review))
-  
+console.log(dietFiltered)
+
   setFilteredList(dietFiltered);
 }, [filterData])
 
@@ -102,7 +101,7 @@ useEffect(() => {
         <Route exact path="/reviews">
         <Navbar/>
         <Filterbar setFilterData={setFilterData} filterData={filterData} attireOptions ={attireOptions} dietOptions={dietOptions}/>
-        <ReviewsList reviews={(filteredList===undefined) ? filteredList : reviews} />
+        <ReviewsList reviews={(filteredList===undefined) ? reviews : filteredList} />
         </Route>
         <Route exact path="/new">
         <Navbar/>

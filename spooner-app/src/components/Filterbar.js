@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 function Filterbar({setFilterData, filterData, attireOptions,dietOptions}){
 let priceChosen =[]
+console.log(priceChosen)
 let attireChosen=[]
 let dietChosen=[]
 
@@ -41,6 +42,8 @@ function dietChosenFilter(event){
 
 function filterSubmit(e){
   e.preventDefault()
+  console.log(e)
+  console.log(e.target)
   console.log("price: "+priceChosen)
   console.log("attire: "+attireChosen)
   console.log("diet: "+dietChosen)
