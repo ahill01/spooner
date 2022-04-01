@@ -6,7 +6,8 @@ function NewReviewForm() {
     name:"",
     price:"",
     attire:"",
-    rating:""
+    rating:"",
+    image:"",
   })
 
   const[newDietary, setNewDietary] = useState([])
@@ -37,10 +38,12 @@ function handleDietaryChange(e){
     if(e.target.checked === true){
      dietaryArr.push(value)
      setNewDietary(dietaryArr) 
+     console.log(newDietary)
 
     } else {
      dietaryArr = dietaryArr.filter(element => {return element!==value})
     setNewDietary(dietaryArr)
+    console.log(newDietary)
     }
 
 }
@@ -74,6 +77,9 @@ body: JSON.stringify({...newReview,dietary:newDietary})
 
            <p> Restaurant Name:</p>
            <input name="name" onChange={handleChange}/>
+
+           <p>Share a Pic! </p>
+           <input name="image" onChange={handleChange}/>
 
            <p>Price:</p>            
             <select name="price" onChange={handleChange} >        
