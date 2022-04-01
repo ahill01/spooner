@@ -15,7 +15,7 @@ li {
 }
 a {
   text-decoration: none;
-  color: rgb(204, 204, 204);
+  color: rgb(29, 28, 28);
 }
 
 .nav {
@@ -23,7 +23,7 @@ a {
   align-items: center;
   justify-content: space-around;
   height: 8vh;
-  background: rgb(158, 46, 111);
+  background: rgb(236, 98, 179);
   font-size: 1.6rem;
   line-height: auto;
   padding: auto;
@@ -60,7 +60,7 @@ a {
     right: 0;
     height: 93vh;
     width: 50vw;
-    background: rgb(158, 46, 111);
+    background: rgb(236, 98, 179);
     flex-direction: column;
     transform: translateX(100%);
     transition: 0.5s ease-in;

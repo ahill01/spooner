@@ -297,13 +297,13 @@
     width:65%;
   }
   .review {
-    background-color: aquamarine;
-    grid-column: 1 / 2;
+    background-color: rgb(219, 155, 239);
+    /* grid-column: 1 / 2; */
     margin:auto;
     justify-content: center;
     display:flex;
     flex-shrink: 7;
-    width: 60%;
+    width: 100%;
     padding:20px;
     vertical-align: middle;
     border-style: solid;
@@ -326,15 +326,29 @@
     text-align: center;
   }
 
-  #filterbar{
+  #filterbar{ 
+  position: fixed;
+  top: 58%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
     float:left;
     width:20%;
     height: 100vh;
     display:flex;
     grid-column: 1/2;
     flex-direction: column;
-    background-color: lightpink;
+    background-color: rgb(105, 201, 227);
     padding: 10px;
+ 
+}
+
+
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
   }
 
   .review-list {
